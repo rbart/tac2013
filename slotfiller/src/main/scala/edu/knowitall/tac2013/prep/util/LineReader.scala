@@ -16,7 +16,7 @@ class LineReader private (source: Source) extends Iterator[Line] {
   private val textBuffer = new StringBuilder
   private val termBuffer = new StringBuilder
 
-  def getc() = iter.hasNext && {
+  private def getc() = iter.hasNext && {
     val ch = iter.next()
     if (ch == '\n') {
       termBuffer append ch
