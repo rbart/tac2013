@@ -152,14 +152,14 @@ object KBPQuery {
   }
   
 
-  def parseKBPQueries(pathToFile: String): List[KBPQuery] = {
+  def parseKBPQueries(pathToFile: String): Iterator[KBPQuery] = {
     
      val xml = XML.loadFile(pathToFile)
      val queryXMLSeq = xml.\("query")
      
-     val kbpQueryList = for( qXML <- queryXMLSeq) yield parseSingleKBPQueryFromXML(qXML)
+     val kbpQueryList = for( qXML <- queryXMLSeq.iterator) yield parseSingleKBPQueryFromXML(qXML)
     
-     kbpQueryList.toList
+     kbpQueryList
   }
   
 }

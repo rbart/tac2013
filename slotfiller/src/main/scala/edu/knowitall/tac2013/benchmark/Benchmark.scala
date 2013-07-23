@@ -227,9 +227,7 @@ object Benchmarker {
     val parser = new OptionParser() {
       arg("corpus", "2012 or 2013", { corpus = _ })
       opt("outFile", "File for output, default stdout", { s => output = new PrintStream(s)})
-      opt("coref", "Coref on true or false", { s => corefOn = s match{
-        case "true" => true
-        case _ =>  false }})
+      opt("coref", "Coref on", { corefOn = true })
     }
     
     if (!parser.parse(args)) return
